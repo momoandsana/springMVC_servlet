@@ -5,13 +5,15 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
 @WebServlet(name="helloServlet",urlPatterns = "/hello")
 public class HelloServlet extends HttpServlet {
     @Override
-    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("HelloServlet.service");
         // http 요청이 오면 was(서블릿 컨테이너)가 request response 객체를 만들어서 서블릿한테 전달
         System.out.println("request = " + request);
@@ -31,7 +33,5 @@ public class HelloServlet extends HttpServlet {
         // 여기까지는 헤더에 들어가는 내용
         response.getWriter().write("hello "+username);
         // 여기는 body 에 들어가는 내용
-
-
     }
 }
