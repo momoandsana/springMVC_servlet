@@ -1,8 +1,8 @@
 plugins {
 	id 'java'
-	id 'war'
-	id 'org.springframework.boot' version '3.3.4'
-	id 'io.spring.dependency-management' version '1.1.6'
+	id 'war' // WAR 파일 생성을 위한 플러그인
+	id 'org.springframework.boot' version '3.3.4' // Spring Boot 플러그인
+	id 'io.spring.dependency-management' version '1.1.6' // 의존성 관리 플러그인
 }
 
 group = 'hello'
@@ -10,31 +10,31 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+		languageVersion = JavaLanguageVersion.of(17) // Java 17 사용
 	}
 }
 
 configurations {
 	compileOnly {
-		extendsFrom annotationProcessor
+		extendsFrom annotationProcessor // Lombok과 같은 annotation processor를 compileOnly로 추가
 	}
 }
 
 repositories {
-	mavenCentral()
+	mavenCentral() // Maven Central 레포지토리 사용
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'jakarta.servlet:jakarta.servlet-api:5.0.0'
+	implementation 'org.springframework.boot:spring-boot-starter-web' // Spring Boot 웹 스타터
+	// jakarta.servlet-api 의존성 제거
 
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	implementation 'org.springframework.boot:spring-boot-starter-tomcat'  // tomcat을 implementation으로 변경
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	compileOnly 'org.projectlombok:lombok' // Lombok 라이브러리
+	annotationProcessor 'org.projectlombok:lombok' // Lombok annotation processor
+	implementation 'org.springframework.boot:spring-boot-starter-tomcat' // Tomcat 서버 스타터
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' // 테스트 스타터
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // JUnit 플랫폼 런처
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+	useJUnitPlatform() // JUnit 플랫폼 사용 설정
 }
