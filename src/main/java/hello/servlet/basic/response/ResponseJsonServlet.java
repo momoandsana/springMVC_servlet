@@ -19,14 +19,14 @@ public class ResponseJsonServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Content-Type : application/json
         response.setContentType("application/json");
-        response.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8"); // 한글을 보낼 수 있도록 하기 위해서 인코딩 설정
 
         HelloData helloData=new HelloData();
         helloData.setUsername("kim");
         helloData.setAge(20);
 
         //{"username":"kim","age":20}
-        String result=objectMapper.writeValueAsString(helloData);
+        String result=objectMapper.writeValueAsString(helloData);// helloData 객체를 json 으로 만들어서 전송
         response.getWriter().write(result);
     }
 }
