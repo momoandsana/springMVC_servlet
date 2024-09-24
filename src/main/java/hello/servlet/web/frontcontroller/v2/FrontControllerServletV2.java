@@ -50,6 +50,7 @@ public class FrontControllerServletV2 extends HttpServlet {
         // 2. 해당  url 에 매치되는 컨트롤러가 MyView 객체를 반환하고 MyView 객체에는 jsp 주소의 정보가 담겨져 있다
         view.render(request,response);
         //3. render 함수에는 해당 jsp 파일에 포워딩하는 request.getRequestDispatcher(viewPath).forward(request,response) 코드가 있다
+        
         /*
         모든 컨트롤러들이 무조건 뷰를 반환해야 하기 때문에 엉뚱한 거는 에러처리
         이렇게 뷰로 받고 랜더링함으로써 공통 로직에 대한 코드를 많이 줄였다
