@@ -23,15 +23,20 @@ public class FrontControllerServletV1 extends HttpServlet {
         controllerMap.put("/front-controller/v1/members/new-form", new MemberFormControllerV1());
         controllerMap.put("/front-controller/v1/members/save", new MemberSaveControllerV1());
         controllerMap.put("/front-controller/v1/members", new MemberListControllerV1());
+        /*
+         key 가 url, value 가 객체
+         ControllerV1 controller = controllerMap.get(requestURI);
+         나중에 요청 받는 url 을 통해 알맞은 컨트롤러 객체를 얻기 위해서
+         */
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("FrontControllerServletV1.service");
 
-        String requestURI = request.getRequestURI(); // uri 를 받아옴 http://localhost:8080/front-controller/v1/hello
+        String requestURI = request.getRequestURI(); // url 를 받아옴 http://localhost:8080/front-controller/v1/hello
 
-        ControllerV1 controller = controllerMap.get(requestURI); // uri 로 컨트롤러를 찾아. 인터페이스로 꺼내기 때문에 일관성 있게 꺼낼 수 있다
+        ControllerV1 controller = controllerMap.get(requestURI); // url 로 컨트롤러를 찾아. 인터페이스로 꺼내기 때문에 일관성 있게 꺼낼 수 있다
         if(controller==null)
         {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
