@@ -48,7 +48,7 @@ public class FrontControllerServletV2 extends HttpServlet {
         }
 
         MyView view = controller.process(request, response); 
-        // 2. 해당  url 에 매치되는 컨트롤러가 MyView 객체를 반환하고 MyView 객체에는 jsp 주소의 정보가 담겨져 있다
+        // 2. 해당  url 에 매치되는 컨트롤러가 비즈니스 로직을 처리하고, MyView 객체를 반환하고 MyView 객체에는 jsp 주소의 정보가 담겨져 있다
         view.render(request,response);
         //3. render 함수에는 해당 jsp 파일에 포워딩하는 request.getRequestDispatcher(viewPath).forward(request,response) 코드가 있다
         
