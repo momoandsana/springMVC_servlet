@@ -37,17 +37,19 @@ public class FrontControllerServletV2 extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("FrontControllerServletV2.service");
 
-        String requestURI = request.getRequestURI(); // 요청이 온 url 를 받아옴 http://localhost:8080/front-controller/v1/hello
+        String requestURI = request.getRequestURI(); // 1. 요청이 온 url 를 받아옴 http://localhost:8080/front-controller/v1/hello
 
-        ControllerV2 controller = controllerMap.get(requestURI); // 해당 url 에 맞는 컨트롤러를 찾아. 인터페이스로 꺼내기 때문에 일관성 있게 꺼낼 수 있다
+        ControllerV2 controller = controllerMap.get(requestURI); // 2. 해당 url 에 맞는 컨트롤러를 찾아. 인터페이스로 꺼내기 때문에 일관성 있게 꺼낼 수 있다
         if(controller==null)
         {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 
-        MyView view = controller.process(request, response); // MyView 객체가 주소룰 가지고 생성된다
+        MyView view = controller.process(request, response); 
+        // 2. 해당  url 에 매치되는 컨트롤러가 MyView 객체를 반환하고 MyView 객체에는 jsp 주소의 정보가 담겨져 있다
         view.render(request,response);
+        //3. render 함수에는 해당 jsp 파일에 포워딩하는 request.getRequestDispatcher(viewPath).forward(request,response) 코드가 있다
         /*
         모든 컨트롤러들이 무조건 뷰를 반환해야 하기 때문에 엉뚱한 거는 에러처리
         이렇게 뷰로 받고 랜더링함으로써 공통 로직에 대한 코드를 많이 줄였다
