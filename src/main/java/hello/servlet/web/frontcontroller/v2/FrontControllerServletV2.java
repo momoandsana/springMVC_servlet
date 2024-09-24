@@ -37,7 +37,7 @@ public class FrontControllerServletV2 extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("FrontControllerServletV2.service");
 
-        String requestURI = request.getRequestURI(); // url 를 받아옴 http://localhost:8080/front-controller/v1/hello
+        String requestURI = request.getRequestURI(); // 요청이 온 url 를 받아옴 http://localhost:8080/front-controller/v1/hello
 
         ControllerV2 controller = controllerMap.get(requestURI); // 해당 url 에 맞는 컨트롤러를 찾아. 인터페이스로 꺼내기 때문에 일관성 있게 꺼낼 수 있다
         if(controller==null)
