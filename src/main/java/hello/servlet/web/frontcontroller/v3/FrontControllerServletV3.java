@@ -54,18 +54,18 @@ public class FrontControllerServletV3 extends HttpServlet {
         //paramMap
         Map<String, String> paramMap = createParamMap(request);
 
-        ModelView mv = controller.process(paramMap);
+        ModelView mv = controller.process(paramMap); // 논리 이름과 처리하고 생긴 결과물이 담긴 ModelView 를 받는다
 
         String viewName = mv.getViewName();//논리 이름 new-form
 
-        MyView view= viewResolver(viewName);// 논리이름을 받아서 물리이름으로 변환해주고 MyView 객체를 반환한다
+        MyView view= viewResolver(viewName);// 논리 이름을 받아서 물리 이름으로 변환해주고 MyView 객체를 반환한다
         // 계층을 맞추기 위해 복잡한 함수는 cmd option m 으로 extract method 한다
 
-        view.render(mv.getModel(),request,response);
+        view.render(mv.getModel(),request,response); // 해당 물리 이름으로 컨트롤러가 처리한 결과물을 가지고 간다
 
     }
 
-    private static MyView viewResolver(String viewName) { // 논리이름을 물리이름으로 변환
+    private static MyView viewResolver(String viewName) { // 논리 이름을 물리 이름으로 변환
         return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
 

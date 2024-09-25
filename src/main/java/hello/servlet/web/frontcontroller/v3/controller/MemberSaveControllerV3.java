@@ -22,7 +22,11 @@ public class MemberSaveControllerV3 implements ControllerV3 {
 
         ModelView mv = new ModelView("save-result");
         mv.getModel().put("member",member);
-        // 멤버 객체에 username, age 를 넣고 그 맴버 객체를 member 라는 키를 가지고 맴버 객체를 value 로 넣는다
+        /*
+         멤버 객체에 username, age 를 넣고 그 맴버 객체를 member 라는 키를 가지고 맴버 객체를 value 로 넣는다
+         request 에서 paramMap 으로 내용물을 넣어서 보낸 것을 받았음
+         ModelView 의 형태로 반환한다
+         */
         return mv;
     }
 }
