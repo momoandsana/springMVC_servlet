@@ -11,5 +11,4 @@ public interface ControllerV3 {
      정보를 request 로 주고 받지 않기 때문에 HttpServletResponse(서블릿 기술)이 필요가 없다
      대신 ModelView 에 정보를 담아서 주고 받는다
      */
-
 }
