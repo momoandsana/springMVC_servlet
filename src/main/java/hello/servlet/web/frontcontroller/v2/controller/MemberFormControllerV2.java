@@ -16,6 +16,6 @@ public class MemberFormControllerV2 implements ControllerV2 {
 //        dispatcher.forward(request, response);
 //        기존의 v1 코드
 
-        return new MyView("/WEB-INF/views/new-form.jsp");
+        return new MyView("/WEB-INF/views/new-form.jsp"); // url 만 보내주면 MyView 의 render() 함수가 포워딩함
     }
 }

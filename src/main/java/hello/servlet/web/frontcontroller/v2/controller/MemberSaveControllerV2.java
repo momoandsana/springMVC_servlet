@@ -16,7 +16,7 @@ public class MemberSaveControllerV2 implements ControllerV2 {
 
     @Override
     public MyView process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username=request.getParameter("username");
+        String username=request.getParameter("username");// new-form.jsp 에서 name 이 username 인 input 이 있음
         int age = Integer.parseInt(request.getParameter("age"));
 
         Member member = new Member(username, age);

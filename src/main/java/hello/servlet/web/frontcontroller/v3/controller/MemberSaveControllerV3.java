@@ -14,7 +14,7 @@ public class MemberSaveControllerV3 implements ControllerV3 {
 
     @Override
     public ModelView process(Map<String, String> paramMap) {
-        String username = paramMap.get("username");
+        String username = paramMap.get("username"); // new-form.jsp 에서 name 이 username 인 input 이 있다
         int age = Integer.parseInt(paramMap.get("age"));
 
         Member member = new Member(username, age);
@@ -26,6 +26,7 @@ public class MemberSaveControllerV3 implements ControllerV3 {
          멤버 객체에 username, age 를 넣고 그 맴버 객체를 member 라는 키를 가지고 맴버 객체를 value 로 넣는다
          request 에서 paramMap 으로 내용물을 넣어서 보낸 것을 받았음
          ModelView 의 형태로 반환한다
+         해시맵인 model 을 받아서 거기다 <String,Object> 를 넣는다 여기서는 "member" 라는 키를 가진 member 객체를 넣는다
          */
         return mv;
     }

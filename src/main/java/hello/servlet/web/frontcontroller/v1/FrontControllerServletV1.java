@@ -34,7 +34,10 @@ public class FrontControllerServletV1 extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("FrontControllerServletV1.service");
 
-        String requestURI = request.getRequestURI(); // url 를 받아옴 http://localhost:8080/front-controller/v1/hello
+        String requestURI = request.getRequestURI(); /*
+        url 를 받아옴 http://localhost:8080/front-controller/v1/hello
+        requestURI 는 포트번호 뒤부터의 값만 반환한다
+        */
 
         ControllerV1 controller = controllerMap.get(requestURI); // url 로 컨트롤러를 찾아. 인터페이스로 꺼내기 때문에 일관성 있게 꺼낼 수 있다
         if(controller==null)
@@ -43,7 +46,7 @@ public class FrontControllerServletV1 extends HttpServlet {
             return;
         }
 
-        controller.process(request,response);
+        controller.process(request,response); // 알맞은 컨트롤러를 호출하고 그 컨트롤러에 있는 process 함수를 호출하여 알맞은 jsp 파일을 포워딩한다
 
     }
 }

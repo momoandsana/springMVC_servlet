@@ -74,9 +74,10 @@ public class FrontControllerServletV3 extends HttpServlet {
 
         request.getParameterNames().asIterator()
                 .forEachRemaining(paramName -> paramMap.put(paramName, request.getParameter(paramName)));
-
         /*
-        request 안의 파라미터들을 모두 순회하면서 해당 파라미터의 이름과 그 값을 paramMap 에 넣는다->여기서 혼자 함수 복잡해서 함수를 뽑음 paramMap 코드랑 request 코드 같이 묶어서 extract method
+        request 안의 파라미터들을 모두 순회하면서 해당 파라미터의 이름과 그 값을 paramMap 에 넣는다
+        ->여기서 혼자 함수 복잡해서 함수를 뽑음 paramMap 코드랑 request 코드 같이 묶어서 extract method
+        여기서 request 를 통해 전달하지 않고 model 만을 이용해서 전송하기 위해 이 방법을 사용
         */
         return paramMap;
     }

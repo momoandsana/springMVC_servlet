@@ -52,13 +52,18 @@ public class FrontControllerServletV4 extends HttpServlet {
         Map<String, String> paramMap = createParamMap(request);
         Map<String,Object> model=new HashMap<>(); // 추가
 
-        String viewName = controller.process(paramMap, model);// 논리 이름과 처리하고 생긴 결과물이 담긴 ModelView 를 받는다
+        String viewName = controller.process(paramMap, model);
+        // 논리 이름만 받고 처리한 결과물들은 해당 컨트롤러에서 알아서 model map 에 넣어둔다.여기서 model map 의 주소를 넣었으니까 나중에 접근해서 꺼낼 수 있음
 
         MyView view= viewResolver(viewName);// 논리 이름을 받아서 물리 이름으로 변환해주고 MyView 객체를 반환한다
         // 계층을 맞추기 위해 복잡한 함수는 cmd option m 으로 extract method 한다
 
-        view.render(model,request,response); // 해당 물리 이름으로 컨트롤러가 처리한 결과물을 가지고 간다
+        view.render(model,request,response);
+        /*
+        컨트롤러에서 알맞은 처리를 하고 model 안에 내용물들을 넣은 상태
 
+         해당 물리 이름으로 컨트롤러가 처리한 결과물을 가지고 간다
+         */
     }
 
     private static MyView viewResolver(String viewName) { // 논리 이름을 물리 이름으로 변환
